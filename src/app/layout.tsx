@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Orbit } from "next/font/google";
 import "./globals.css";
+
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import ScrollDownIcon from "@/components/scrollDown/ScrollDown";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Orbit({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Youtube detox",
@@ -19,12 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <div className={inter.className}>
-          <Header />
-          {children}
-          <Footer />
-        </div>
+      <body className={inter.className}>
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

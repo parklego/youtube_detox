@@ -1,0 +1,6 @@
+.scrollDown {
+  position: fixed;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+}
