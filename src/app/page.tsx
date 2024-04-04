@@ -36,7 +36,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 4 }}
+            transition={{ duration: 3 }}
           >
             <h1 className={styles.subTitle}>
               한국 스마트폰 사용자들은 매달 40시간을 유튜브 시청에 쓰고 있는
@@ -65,7 +65,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 4 }}
+            transition={{ duration: 3 }}
           >
             <h1 className={styles.subTitle}>지금 우리의 뇌는 녹는중...</h1>
 
@@ -84,7 +84,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 4 }}
+            transition={{ duration: 3 }}
           >
             <h1 className={styles.subTitle}>
               우리는 생각보다 많은 것을 할 수 있어요...
@@ -95,7 +95,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 4 }}
+            transition={{ duration: 3 }}
           >
             <div className={styles.cardContainer}>
               {goodItems.map((item) => (
@@ -108,7 +108,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 4 }}
+            transition={{ duration: 3 }}
           >
             <div className={styles.lastContent}>
               <h1 className={styles.subTitle}>
