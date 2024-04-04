@@ -1,6 +1,14 @@
 .container {
-  /* max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 15px;
-  height: 100vh; */
+  display: flex;
+  justify-content: center;
+
+  background-color: #c9c8c8;
+}
+
+.contentContainer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 1280px;
+  height: 100vh;
 }
