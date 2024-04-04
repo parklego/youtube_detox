@@ -9,9 +9,9 @@ export const links = [
     title: "about",
     url: "/about",
   },
-  {
-    id: 2,
-    title: "sign_in",
-    url: "/signin",
-  },
+  // {
+  //   id: 2,
+  //   title: "sign_in",
+  //   url: "/signin",
+  // },
 ];

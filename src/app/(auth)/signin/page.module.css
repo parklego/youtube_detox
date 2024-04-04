@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  height: 100vh;
+}
+
+.signinTitle {
+  font-size: 38px;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.signinButton {
+  width: 250px;
+  height: 80px;
+  font-size: 20px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}

@@ -4,8 +4,11 @@ import React from "react";
 import styles from "./Header.module.css";
 import { links } from "./link";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 
 const Header = () => {
+  const session = useSession();
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -18,6 +21,20 @@ const Header = () => {
               {link.title}
             </Link>
           ))}
+          {session.status === "authenticated" ? (
+            <>
+              <Link className={styles.link} href={"/dashboard"}>
+                dashboard
+              </Link>
+              <button className={styles.link} onClick={() => signOut()}>
+                sign_out
+              </button>
+            </>
+          ) : (
+            <Link className={styles.link} href={"/signin"}>
+              sign_in
+            </Link>
+          )}
         </div>
       </div>
     </div>
