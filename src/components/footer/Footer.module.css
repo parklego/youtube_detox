@@ -18,8 +18,13 @@
   align-items: center;
 }
 
-.me {
+.logoWrapper {
+  display: flex;
+  align-items: center;
 }
 
 .sources {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
