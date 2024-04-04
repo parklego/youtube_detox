@@ -1,7 +1,11 @@
 .container {
-  max-width: 1280px;
+  /* max-width: 1280px;
   margin: 0 auto;
-  background-color: #fff44f;
+  background-color: #fff44f; */
+}
+
+.contentContainer {
+  max-width: 1280px;
 }
 
 .section {
@@ -15,7 +19,7 @@
 }
 
 .title {
-  font-size: 60px;
+  font-size: 55px;
   text-align: center;
 
   margin-bottom: 15px;
@@ -26,12 +30,38 @@
   text-align: center;
 }
 
-.chart {
+.chartContainer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 15px;
   margin-top: 50px;
 }
+.imgContainer {
+  position: relative;
+  width: 500px;
+  height: 500px;
 
-.sources {
-  font-size: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bgOne {
+  background-color: #fffae0;
+}
+
+.bgTwo {
+  background-color: #f9f9f9;
+}
+
+.bgThree {
+  background-color: #fff8f1;
+}
+
+.bgFour {
+  background-color: #f6fdeb;
+}
+
+.listContainer {
+  margin-top: 60px;
 }

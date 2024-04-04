@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: #fff44f;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -20,5 +24,4 @@ a {
 
 main {
   padding-top: 60px;
-  background-color: #fff44f;
 }
