@@ -27,16 +27,12 @@ const SignInPage = () => {
             <br /> 다양한 서비스를 이용해보세요
           </div>
         </div>
-
         <div className={styles.buttonWrapper}>
           <button
-            className={`${styles.signinButton} ${styles.google}`}
+            className={styles.signinButton}
             onClick={() => signIn("google")}
           >
             구글로 로그인하기
-          </button>
-          <button className={`${styles.signinButton} ${styles.kakao}`}>
-            카카오로 로그인하기
           </button>
         </div>
       </div>
