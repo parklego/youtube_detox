@@ -10,8 +10,7 @@ const Footer = () => {
       <div className={styles.wrapper}>
         <div className={styles.sources}>
           <div className={styles.logoWrapper}>
-            <Image src="/logo.jpeg" alt="logo" width={25} height={25} />
-            <p>youtube detox</p>
+            <p>youtube_detox</p>
           </div>
           <div>
             ©{getCurrentYear()}

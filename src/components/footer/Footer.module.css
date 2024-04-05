@@ -16,6 +16,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
 
 .logoWrapper {
@@ -27,4 +28,11 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

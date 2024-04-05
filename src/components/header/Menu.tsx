@@ -42,7 +42,6 @@ const Menu = () => {
             ) : (
               <>
                 <MenubarSeparator />
-
                 <Link className={styles.link} href={"/signin"}>
                   <MenubarItem> sign_in </MenubarItem>
                 </Link>
