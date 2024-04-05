@@ -1,9 +1,8 @@
 "use client";
+
 import { signIn, useSession } from "next-auth/react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
-import { FaGoogle } from "react-icons/fa";
-import { SiKakaotalk } from "react-icons/si";
 
 const SignInPage = () => {
   const session = useSession();
