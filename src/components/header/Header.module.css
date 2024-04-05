@@ -29,6 +29,10 @@
   gap: 50px;
 }
 
+.link {
+  cursor: pointer;
+}
+
 .menu {
   display: none;
 }
