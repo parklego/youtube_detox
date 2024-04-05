@@ -28,3 +28,20 @@
   align-items: center;
   gap: 50px;
 }
+
+.menu {
+  display: none;
+}
+
+.nav {
+  display: flex-inline;
+}
+
+@media (max-width: 767px) {
+  .menu {
+    display: inline;
+  }
+  .nav {
+    display: none;
+  }
+}
