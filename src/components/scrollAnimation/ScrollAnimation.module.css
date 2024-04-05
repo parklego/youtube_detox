@@ -10,3 +10,15 @@
   font-size: 20px;
   cursor: default;
 }
+
+@media (max-width: 767px) {
+  .container {
+    width: 325px;
+    margin: 10px 0;
+    padding: 10px;
+  }
+  .item {
+    font-size: 16px;
+    cursor: default;
+  }
+}

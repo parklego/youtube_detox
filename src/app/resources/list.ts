@@ -22,7 +22,7 @@ export const goodItems = [
   },
   {
     id: 3,
-    title: "여행 및 네트워킹",
+    title: "여행 및 탐험",
     description: "새로운 곳으로의 여행은 삶을 더 풍요롭게 만들어줍니다",
     image: "/travel.jpg",
   },

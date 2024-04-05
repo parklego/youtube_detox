@@ -43,3 +43,29 @@
   font-size: 15px;
   color: #333;
 }
+
+@media (max-width: 1199px) {
+  .container {
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 150px;
+    height: 180px;
+  }
+
+  .imgContainer {
+    display: none;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+}
