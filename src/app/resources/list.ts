@@ -39,3 +39,31 @@ export const goodItems = [
     image: "/hobby.jpg",
   },
 ];
+
+export const navList = [
+  {
+    id: 0,
+    title: "content",
+    url: "/content",
+  },
+  {
+    id: 1,
+    title: "category",
+    url: "/category",
+  },
+  {
+    id: 2,
+    title: "channel",
+    url: "/channel",
+  },
+  {
+    id: 3,
+    title: "records",
+    url: "/records",
+  },
+  {
+    id: 4,
+    title: "community",
+    url: "/community",
+  },
+];

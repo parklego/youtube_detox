@@ -14,6 +14,7 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import { navList } from "@/app/resources/list";
 
 const Menu = () => {
   const session = useSession();
@@ -34,6 +35,19 @@ const Menu = () => {
                 <Link className={styles.link} href={"/dashboard"}>
                   <MenubarItem>dashboard </MenubarItem>
                 </Link>
+
+                {navList.map((item: NavItemType) => {
+                  return (
+                    <Link
+                      href={`/dashboard${item.url}`}
+                      key={item.id}
+                      className={styles.sideItem}
+                    >
+                      <MenubarItem>- {item.title}</MenubarItem>
+                    </Link>
+                  );
+                })}
+
                 <MenubarSeparator />
                 <MenubarItem className={styles.link} onClick={() => signOut()}>
                   sign_out

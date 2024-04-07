@@ -17,11 +17,10 @@ const Dashboard = () => {
   }
 
   if (session.status === "authenticated") {
-   
-
     return (
-      <div className={styles.container}>
-        <div className={styles.contentWrapper}>반가워요 </div>
+      <div className={styles.dashboard}>
+        <p>{`반가워요. ${session.data.user?.name}님`}</p>
+        <p>오늘도 소중한 시간을 만들어봐요.</p>
       </div>
     );
   }

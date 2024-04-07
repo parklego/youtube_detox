@@ -4,3 +4,9 @@ interface GoodItemType {
   description: string;
   image: string;
 }
+
+interface NavItemType {
+  id: number;
+  title: string;
+  url: string;
+}

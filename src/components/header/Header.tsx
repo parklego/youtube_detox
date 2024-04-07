@@ -5,6 +5,7 @@ import Link from "next/link";
 import { links } from "./link";
 import styles from "./Header.module.css";
 import Menu from "./Menu";
+import { navList } from "@/app/resources/list";
 
 const Header = () => {
   const session = useSession();
