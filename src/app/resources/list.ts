@@ -43,26 +43,31 @@ export const goodItems = [
 export const navList = [
   {
     id: 0,
+    title: "dashboard",
+    url: "/",
+  },
+  {
+    id: 1,
     title: "content",
     url: "/content",
   },
   {
-    id: 1,
+    id: 2,
     title: "category",
     url: "/category",
   },
   {
-    id: 2,
+    id: 3,
     title: "channel",
     url: "/channel",
   },
   {
-    id: 3,
+    id: 4,
     title: "records",
     url: "/records",
   },
   {
-    id: 4,
+    id: 5,
     title: "community",
     url: "/community",
   },
