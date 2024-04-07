@@ -93,8 +93,8 @@ const About = () => {
                   기록 탭을 눌러, 유튜브의 시청 시간을 입력합니다.
                 </p>
                 <p>
-                  5. 대시보드를 통해 얼마나 시청시간이 줄었고, 생산적인 곳에
-                  썼는지 비교해봅니다.
+                  5. 로그인 이후 메인 화면에서 얼마나 시청시간이 줄었고,
+                  생산적인 곳에 썼는지 비교해봅니다.
                 </p>
                 <br />
                 <p>
@@ -107,8 +107,8 @@ const About = () => {
             <AccordionItem value="item-3">
               <AccordionTrigger>이 사이트는 유료인가요?</AccordionTrigger>
               <AccordionContent>
-                아니요. 현재 유튜브에서 제공하는 무료 API를 통해 일일 사용량
-                만큼 이용가능합니다.
+                아니요. 현재 유튜브에서 제공하는 무료 일일 사용량 만큼
+                이용가능합니다.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
