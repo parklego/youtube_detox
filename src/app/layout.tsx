@@ -5,7 +5,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import AuthProvider from "@/components/authProvider/authProvider";
 
-const inter = Orbit({ subsets: ["latin"], weight: "400" });
+const inter = Orbit({ subsets: ["latin"], weight: "400", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Youtube detox",
