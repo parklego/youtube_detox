@@ -9,15 +9,6 @@ const handler = NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
-      // authorization: {
-      //   params: {
-      //     scope:
-      //       "openid email profile https://www.googleapis.com/auth/youtube.readonly",
-      //     prompt: "consent",
-      //     access_type: "offline",
-      //     response_type: "code",
-      //   },
-      // },
     }),
   ],
   pages: {
@@ -25,7 +16,7 @@ const handler = NextAuth({
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async signIn({ user }) {
+    async signIn({ user, account, profile }) {
       const { name, email } = user;
 
       // await prisma.user.deleteMany({});

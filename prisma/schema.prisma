@@ -18,5 +18,7 @@ model User {
   id      Int      @id @default(autoincrement())
   email   String?   @unique
   name    String?
+  category Json?
   createdAt DateTime @default(now())
 }
+

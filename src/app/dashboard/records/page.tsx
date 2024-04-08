@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
+
 const Records = () => {
   return (
     <div className={styles.container}>
@@ -26,11 +27,9 @@ const Records = () => {
         </div>
         <div className={styles.info}>
           <div>
-            
             <p>유튜브 시청시간은 보는 방법은 아래와 같습니다.</p>
           </div>
           <div className={styles.infoList}>
-            
             <p>1. 유튜브앱을 실행한다.</p>
             <p>2. 유튜브앱의 하단 프로필을 누른다.</p>
             <p>3. 하단으로 스크롤하여 시청 시간 탭을 선택한다.</p>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import styles from "./page.module.css";
@@ -8,10 +8,30 @@ import { nanoid } from "nanoid";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { AiOutlineDelete } from "react-icons/ai";
 import { toast } from "sonner";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
 const Category = () => {
-  const [category, setCategory] = useState<{ id: string; name: string }[]>([]);
+  const session = useSession();
+  const [category, setCategory] = useState<
+    { id: string; name: string; channel: string[] }[]
+  >([]);
   const [addCategory, setAddCategory] = useState<string>("");
+  const { data } = useSession();
+
+  useEffect(() => {
+    const dataFetch = async () => {
+      const response = await axios.post("/api/category/read", {
+        email: data?.user?.email,
+        category: category,
+      });
+      return response;
+    };
+
+    dataFetch().then((res) => {
+      setCategory(res.data.category);
+    });
+  }, []);
 
   const handleAddCategory = () => {
     if (addCategory.trim().length >= 1 && addCategory.trim().length <= 12) {
@@ -20,6 +40,7 @@ const Category = () => {
         {
           id: nanoid(),
           name: addCategory,
+          channel: [],
         },
       ]);
     } else if (category.length >= 6) {
@@ -34,8 +55,13 @@ const Category = () => {
     setCategory(category.filter((item) => item.id !== id));
   };
 
-  const handleCategorySave = () => {
-    console.log(category);
+  const handleSubmitCategory = async () => {
+    const response = await axios.post("/api/category/save", {
+      email: session?.data?.user?.email,
+      category: category,
+    });
+
+    console.log(response);
   };
 
   return (
@@ -47,7 +73,7 @@ const Category = () => {
           id="textInput"
           value={addCategory}
           onChange={(e) => setAddCategory(e.target.value)}
-          disabled={category.length === 6}
+          disabled={category?.length === 6}
         />
 
         <IoIosAddCircleOutline fontSize={30} onClick={handleAddCategory} />
@@ -68,7 +94,7 @@ const Category = () => {
           );
         })}
       </div>
-      <Button className={styles.saveButton} onClick={handleCategorySave}>
+      <Button className={styles.saveButton} onClick={handleSubmitCategory}>
         저장하기
       </Button>
     </div>
