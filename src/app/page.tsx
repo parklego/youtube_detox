@@ -1,6 +1,5 @@
 "use client";
 
-import ScrollDownIcon from "@/components/scrollDown/ScrollDown";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
