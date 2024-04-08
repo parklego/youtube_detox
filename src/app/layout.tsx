@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import AuthProvider from "@/components/authProvider/authProvider";
+import { Toaster } from "sonner";
 
 const inter = Orbit({ subsets: ["latin"], weight: "400", display: "swap" });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <AuthProvider>
           <Header />
           <main>{children}</main>
+          <Toaster />
           <Footer />
         </AuthProvider>
       </body>

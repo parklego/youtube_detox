@@ -8,6 +8,7 @@ const Dashboard = () => {
   const session = useSession();
   const router = useRouter();
 
+  console.log(session);
   if (session.status === "loading") {
     return <div className={styles.container}>loading..</div>;
   }
