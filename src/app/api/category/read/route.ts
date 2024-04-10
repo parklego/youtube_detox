@@ -5,11 +5,11 @@ const prisma = new PrismaClient();
 export const POST = async (request: Request, response: Response) => {
   try {
     const data = await request.json();
-    const { email } = data;
+    const { id } = data;
 
     const result = await prisma.user.findUnique({
       where: {
-        email: email,
+        id: id,
       },
     });
 

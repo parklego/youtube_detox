@@ -5,11 +5,11 @@ const prisma = new PrismaClient();
 export const POST = async (request: Request, response: Response) => {
   try {
     const data = await request.json();
-    const { email, category } = data;
+    const { id, category } = data;
 
     await prisma.user.update({
       where: {
-        email: email,
+        id: id,
       },
       data: {
         category: category,

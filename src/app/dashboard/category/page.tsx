@@ -22,14 +22,16 @@ const Category = () => {
   useEffect(() => {
     const dataFetch = async () => {
       const response = await axios.post("/api/category/read", {
-        email: data?.user?.email,
-        category: category,
+        id: data?.user?.id,
       });
-      setCategory(response.data.category);
+
+      if (response.data.category) {
+        setCategory(response.data.category);
+      }
     };
 
     dataFetch();
-  }, [data?.user?.email]);
+  }, [data]);
 
   const handleAddCategory = () => {
     if (addCategory.trim().length >= 1 && addCategory.trim().length <= 12) {
@@ -55,7 +57,7 @@ const Category = () => {
 
   const handleSubmitCategory = async () => {
     const response = await axios.post("/api/category/save", {
-      email: session?.data?.user?.email,
+      id: session?.data?.user?.id,
       category: category,
     });
 
