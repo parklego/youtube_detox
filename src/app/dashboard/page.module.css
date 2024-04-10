@@ -61,6 +61,7 @@
 
 .recordWrapper {
   display: flex;
+
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -71,15 +72,15 @@
 }
 
 .timeWrapper {
+  min-width: 250px;
+  min-height: 250px;
+}
+
+.percentWrapper {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  min-width: 300px;
-  min-height: 300px;
-  border-radius: 50%;
-  border: 1px solid #ccc;
+  justify-content: center;
+  aligin-items: center;
+  gap: 15px;
 }
 
 @media (max-width: 767px) {

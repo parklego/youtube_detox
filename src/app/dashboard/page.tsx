@@ -3,9 +3,13 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { toast } from "sonner";
+import DoughnutChart from "@/components/doughnutChart/DoughnutChart";
+import { getDecreasePercentTime, getSaveTime } from "@/utils/utils";
+import { FaLongArrowAltUp } from "react-icons/fa";
+import { FaLongArrowAltDown } from "react-icons/fa";
 
 const Dashboard = () => {
   const session = useSession();
@@ -17,6 +21,8 @@ const Dashboard = () => {
   });
 
   const { status, data } = session;
+
+  const result = getDecreasePercentTime(record.initialTime, record.detoxTime);
 
   useEffect(() => {
     const dataFetch = async () => {
@@ -35,7 +41,7 @@ const Dashboard = () => {
 
     dataFetch();
   }, [data]);
-  // console.log(record);
+
   if (status === "loading") {
     return <div className={styles.container}>loading..</div>;
   }
@@ -51,19 +57,56 @@ const Dashboard = () => {
 
       <div className={styles.recordWrapper}>
         <div className={styles.timeWrapper}>
-          <p> 디톡스 전 기록된 유튜브 시청 시간</p>
-          <p>
-            {record?.initialTime ? record.initialTime : "아직 입력 전입니다."}
-          </p>
+          <DoughnutChart
+            title={"디톡스 전 기록된 유튜브 시청 시간"}
+            labels={["생산 시간", "시청 시간"]}
+            data={getSaveTime(record.initialTime)}
+          />
         </div>
 
         <div className={styles.timeWrapper}>
-          <p>디톡스 후 기록된 유튜브 시청 시간</p>
-          <p>{record?.detoxTime ? record.detoxTime : "아직 입력 전입니다."}</p>
+          <DoughnutChart
+            title={"디톡스 후 기록된 유튜브 시청 시간"}
+            labels={["생산 시간", "시청 시간"]}
+            data={getSaveTime(record.detoxTime)}
+          />
         </div>
       </div>
+      <p className=" text-sm m-10">
+        {result.isPossible && (
+          <PercentComponent percent={Number(result.percentage)} />
+        )}
+      </p>
+      <p className=" text-xs m-20">
+        생산 시간(50h) = 하루(24h) x 7일 - 수면(8h) x 7일 - 일과시간(8h) x 5일 -
+        밥시간(3h) x 7일 - 기타시간(1h)
+      </p>
     </div>
   );
 };
 
 export default Dashboard;
+
+const PercentComponent = ({ percent }: { percent: number }) => {
+  const removeMinusSign = (number: number): string => {
+    return `${Math.abs(number)}`;
+  };
+
+  if (percent >= 0) {
+    return (
+      <div className={styles.percentWrapper}>
+        <FaLongArrowAltDown />
+        {removeMinusSign(percent)}
+      </div>
+    );
+  } else if (percent < 0) {
+    return (
+      <div className={styles.percentWrapper}>
+        <FaLongArrowAltUp />
+        {removeMinusSign(percent)}
+      </div>
+    );
+  } else {
+    return null;
+  }
+};
