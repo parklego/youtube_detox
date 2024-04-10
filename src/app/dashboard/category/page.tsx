@@ -17,16 +17,24 @@ const Category = () => {
     { id: string; name: string; channel: string[] }[]
   >([]);
   const [addCategory, setAddCategory] = useState<string>("");
+  const [access, setAccess] = useState(false);
+
   const { data } = useSession();
 
   useEffect(() => {
     const dataFetch = async () => {
-      const response = await axios.post("/api/category/read", {
-        id: data?.user?.id,
-      });
-
-      if (response.data.category) {
-        setCategory(response.data.category);
+      if (data) {
+        const response = await axios.post("/api/category/read", {
+          id: data.user.id,
+        });
+        console.log("response.status", response.status);
+        if (response.status === 200) {
+          setCategory(response.data.category);
+          setAccess(true);
+        } else {
+          setAccess(false);
+          toast.error("카테고리를 불러오는데 실패하였습니다.");
+        }
       }
     };
 
@@ -44,9 +52,9 @@ const Category = () => {
         },
       ]);
     } else if (category.length >= 6) {
-      toast("카테고리는 최대 6개까지 생성가능합니다.");
+      toast.warning("카테고리는 최대 6개까지 생성가능합니다.");
     } else {
-      toast("카테고리는 최소 1글자에서 최대 12글자까지 가능합니다.");
+      toast.warning("카테고리는 최소 1글자에서 최대 12글자까지 가능합니다.");
     }
     setAddCategory("");
   };
@@ -62,6 +70,7 @@ const Category = () => {
     });
 
     console.log(response);
+    toast.success("카테고리가 저장되었습니다.");
   };
 
   return (
@@ -94,9 +103,11 @@ const Category = () => {
           );
         })}
       </div>
-      <Button className={styles.saveButton} onClick={handleSubmitCategory}>
-        저장하기
-      </Button>
+      {access && (
+        <Button className={styles.saveButton} onClick={handleSubmitCategory}>
+          저장하기
+        </Button>
+      )}
     </div>
   );
 };
