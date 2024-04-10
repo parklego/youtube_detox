@@ -1,4 +1,5 @@
 import { PrismaClient, Prisma } from "@prisma/client";
+import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
@@ -7,7 +8,7 @@ export const POST = async (request: Request, response: Response) => {
     const data = await request.json();
     const { id, category } = data;
 
-    await prisma.user.update({
+    const result = await prisma.user.update({
       where: {
         id: id,
       },
@@ -16,9 +17,8 @@ export const POST = async (request: Request, response: Response) => {
       },
     });
 
-    return Response.json({ message: "good" });
+    return NextResponse.json(result);
   } catch (error) {
-    console.error("Error:", error);
-    return Response.json({ message: "error" });
+    return NextResponse.json({ message: "Error" }, { status: 500 });
   }
 };
