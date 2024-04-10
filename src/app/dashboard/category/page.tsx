@@ -69,7 +69,7 @@ const Category = () => {
       category: category,
     });
 
-    console.log(response);
+    // console.log(response);
     toast.success("카테고리가 저장되었습니다.");
   };
 
