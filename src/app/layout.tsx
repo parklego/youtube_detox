@@ -24,8 +24,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthProvider>
           <Header />
-          <main>{children}</main>
-          <Toaster position="top-right" richColors />
+          <div>
+            <main>{children}</main>
+            <Toaster position="top-right" richColors />
+          </div>
           <Footer />
         </AuthProvider>
       </body>

@@ -27,9 +27,9 @@ const Category = () => {
         const response = await axios.post("/api/category/read", {
           id: data.user.id,
         });
-        console.log("response.status", response.status);
+
         if (response.status === 200) {
-          setCategory(response.data.category);
+          setCategory(response.data.category || []);
           setAccess(true);
         } else {
           setAccess(false);

@@ -13,12 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
   id      Int      @id @default(autoincrement())
   email   String?   @unique
   name    String?
   category Json?
-  createdAt DateTime @default(now())
+  initialTime String?
+  initialState Boolean @default(false)
+  detoxTime String?
+  createdAt String?
 }
 

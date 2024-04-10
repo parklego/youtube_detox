@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from "@prisma/client";
+import { DateTime } from "luxon";
 
 const prisma = new PrismaClient();
 
@@ -40,6 +41,7 @@ const handler = NextAuth({
           data: {
             email: email,
             name: name,
+            createdAt: DateTime.now().setLocale("ko").toLocaleString(),
           },
         });
         existingUser = newUser;
