@@ -25,13 +25,11 @@ const Category = () => {
         email: data?.user?.email,
         category: category,
       });
-      return response;
+      setCategory(response.data.category);
     };
 
-    dataFetch().then((res) => {
-      setCategory(res.data.category);
-    });
-  }, []);
+    dataFetch();
+  }, [data?.user?.email]);
 
   const handleAddCategory = () => {
     if (addCategory.trim().length >= 1 && addCategory.trim().length <= 12) {
