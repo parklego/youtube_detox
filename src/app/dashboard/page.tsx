@@ -95,15 +95,19 @@ const PercentComponent = ({ percent }: { percent: number }) => {
   if (percent >= 0) {
     return (
       <div className={styles.percentWrapper}>
-        <FaLongArrowAltDown />
-        {removeMinusSign(percent)}
+        <div className=" text-xl">
+          <FaLongArrowAltDown />
+        </div>
+        {`${removeMinusSign(percent)}%`}
       </div>
     );
   } else if (percent < 0) {
     return (
       <div className={styles.percentWrapper}>
-        <FaLongArrowAltUp />
-        {removeMinusSign(percent)}
+        <div className=" text-xl">
+          <FaLongArrowAltUp />
+        </div>
+        {`${removeMinusSign(percent)}%`}
       </div>
     );
   } else {

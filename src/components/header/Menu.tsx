@@ -32,10 +32,7 @@ const Menu = () => {
             ))}
             {session.status === "authenticated" ? (
               <>
-                <Link className={styles.link} href={"/dashboard"}>
-                  <MenubarItem>dashboard </MenubarItem>
-                </Link>
-
+                <MenubarSeparator />
                 {navList.map((item: NavItemType) => {
                   return (
                     <Link
@@ -43,7 +40,7 @@ const Menu = () => {
                       key={item.id}
                       className={styles.sideItem}
                     >
-                      <MenubarItem>- {item.title}</MenubarItem>
+                      <MenubarItem>{item.title}</MenubarItem>
                     </Link>
                   );
                 })}
