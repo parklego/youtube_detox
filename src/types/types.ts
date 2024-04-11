@@ -10,3 +10,19 @@ interface NavItemType {
   title: string;
   url: string;
 }
+
+interface Category {
+  id: string;
+  name: string;
+  channel: any;
+}
+
+interface Channel {
+  etag: string;
+  kind: string;
+  id: {
+    channelId: string;
+    kind: string;
+  };
+  snippet: any;
+}
