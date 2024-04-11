@@ -68,8 +68,6 @@ const Category = () => {
       id: session?.data?.user?.id,
       category: category,
     });
-
-    // console.log(response);
     toast.success("카테고리가 저장되었습니다.");
   };
 

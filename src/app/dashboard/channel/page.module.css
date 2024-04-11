@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* text-align: center; */
 }
 
 .searchChannelWrapper {
@@ -21,6 +22,7 @@
   flex-direction: column;
   gap: 30px;
   padding: 20px;
+  margin-top: 50px;
 }
 
 .searchItemWrapper {
@@ -45,8 +47,28 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 10px 30px;
-  padding-top: 30px;
+  padding: 30px 0;
   min-height: 100px;
+}
+
+.channelDeleteWrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.categoryViewer {
+  padding: 20px;
+}
+
+.channelViewer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px 0;
+  gap: 10px;
+}
+.separator {
+  width: 100%;
+  border-bottom: 1px solid #eee;
 }
 
 @media (max-width: 767px) {

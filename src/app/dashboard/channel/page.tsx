@@ -17,11 +17,13 @@ import {
 } from "@/components/ui/dialog";
 import { useSession } from "next-auth/react";
 import { youtubeMock } from "@/app/resources/mock";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const Channel = () => {
   const [keyword, setKeyword] = useState<string>("");
   const [channelList, setChannelList] = useState<Channel[]>([]); // 검색한 채널 리스트
   const [categoryList, setCategoryList] = useState<Category[]>([]); // 내가 설정한 카테고리 리스트
+  const [selectCategory, setSelectCategory] = useState<Category>(); // 선택한 카테고리
 
   const { data } = useSession();
 
@@ -39,7 +41,6 @@ const Channel = () => {
           }
         }
       } catch (error) {
-        console.error("Error fetching category list:", error);
         toast.error("카테고리를 불러오는데 실패하였습니다.");
       }
     };
@@ -48,21 +49,23 @@ const Channel = () => {
   }, [data]);
 
   const handleSearchChannel = async () => {
+    if (keyword.length <= 1) {
+      return toast.info("최소 2글자 이상부터 검색가능합니다.");
+    }
+
     try {
-      // API 호출 함수
-      // const response = await axios.post("/api/channel", {
-      //   keyword,
-      // });
+      const response = await axios.post("/api/channel", {
+        keyword,
+      });
 
-      // if (response.status === 200) {
-      //   setChannelList(response.data.list);
-      // } else {
-      //   toast.error("채널을 검색하는데 실패하였습니다.");
-      // }
-
-      setChannelList(youtubeMock);
+      if (response.status === 200) {
+        setChannelList(response.data.list);
+      } else {
+        toast.error("채널을 검색하는데 실패하였습니다.");
+      }
+      // Todo : channel search api token 줄이기
+      // setChannelList(youtubeMock);
     } catch (error) {
-      console.error("Error searching channels:", error);
       toast.error("채널을 검색하는데 실패하였습니다.");
     }
   };
@@ -84,20 +87,19 @@ const Channel = () => {
 
     setCategoryList(updatedCategoryList);
 
-    // try {
-    //   const response = await axios.post("/api/category/save", {
-    //     id: data?.user.id,
-    //     category: categoryList,
-    //   });
-    //   if (response.status === 200) {
-    //     toast.success("카테고리에 해당 채널을 추가하였습니다.");
-    //   }
-    // } catch (error) {
-    //   console.error("Error fetching category list:", error);
-    //   toast.error("카테고리에 저장하는데 실패하였습니다.");
-    // }
+    try {
+      const response = await axios.post("/api/category/save", {
+        id: data?.user.id,
+        category: updatedCategoryList,
+      });
+      if (response.status === 200) {
+        toast.success("카테고리에 해당 채널을 추가하였습니다.");
+      }
+    } catch (error) {
+      toast.error("카테고리에 저장하는데 실패하였습니다.");
+    }
   };
-  console.log(channelList);
+
   return (
     <div className={styles.container}>
       <div className={styles.searchChannelWrapper}>
@@ -109,8 +111,47 @@ const Channel = () => {
         />
         <IoSearch onClick={handleSearchChannel} />
       </div>
+      <div className=" text-center">
+        <p>구독할 채널을 검색하여 주세요.</p>
+        <p>키워드와 연관된 채널 최대 5개까지만 표시됩니다.</p>
+      </div>
+      <div className={styles.categoryListWrapper}>
+        {categoryList.map((category: Category) => (
+          <div key={category.id}>
+            <Button
+              className="hover:bg-primary/10"
+              variant="secondary"
+              onClick={() => setSelectCategory(category)}
+            >
+              {category.name}
+            </Button>
+          </div>
+        ))}
+      </div>
+      <div className={styles.separator} />
+      {selectCategory && (
+        <div className={styles.categoryViewer}>
+          <div>{`${selectCategory.name} 카테고리에 구독중인 채널 목록입니다.`}</div>
+          <div className={styles.channelViewer}>
+               {/* Todo : delete api  */}
+            {selectCategory.channel.map((channel: Channel) => (
+              <Button
+                variant="secondary"
+                key={channel.id.channelId}
+                className={styles.channelDeleteWrapper}
+                onClick={() => alert('준비중')}
+              >
+                <div>{channel.snippet.channelTitle}</div>     
+                <AiOutlineDelete />
+              </Button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className={styles.searchResultWrapper}>
+        <div className={styles.separator} />
+        {channelList.length >= 1 && <p>검색 결과입니다.</p>}
         {channelList.map((item: Channel, idx: number) => (
           <div key={idx} className={styles.searchItemWrapper}>
             <Image
@@ -121,9 +162,8 @@ const Channel = () => {
             />
             <div className={styles.channelTitle}>
               <div>{item.snippet.channelTitle}</div>
-              <div> {item.snippet.description}</div>
+              <div>{item.snippet.description || "채널 설명없음"}</div>
             </div>
-
             <Dialog>
               <DialogTrigger className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm">
                 채널추가
@@ -146,9 +186,6 @@ const Channel = () => {
                       </div>
                     ))}
                   </div>
-                  {/* <DialogClose asChild>
-                    <Button aria-label="Close">닫기</Button>
-                  </DialogClose> */}
                 </DialogHeader>
               </DialogContent>
             </Dialog>
