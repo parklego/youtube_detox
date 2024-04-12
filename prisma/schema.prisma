@@ -21,6 +21,7 @@ model User {
   initialTime String?
   initialState Boolean @default(false)
   detoxTime String?
+  signinProvider String
   createdAt String?
 }
 

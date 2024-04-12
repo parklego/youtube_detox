@@ -33,6 +33,12 @@ const SignInPage = () => {
           >
             구글로 로그인하기
           </button>
+          <button
+            className={styles.signinButton}
+            onClick={() => signIn("kakao")}
+          >
+            카카오로 로그인하기
+          </button>
         </div>
       </div>
     </div>
