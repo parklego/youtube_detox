@@ -7,7 +7,12 @@ import Footer from "@/components/footer/Footer";
 import AuthProvider from "@/components/authProvider/authProvider";
 import { Toaster } from "sonner";
 
-const inter = Orbit({ subsets: ["latin"], weight: "400", display: "swap" });
+const inter = Orbit({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: "Youtube detox",
@@ -20,8 +25,6 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  // Also supported by less commonly used
-  // interactiveWidget: 'resizes-visual',
 };
 
 export default function RootLayout({
