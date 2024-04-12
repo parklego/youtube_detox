@@ -2,8 +2,10 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { navList } from "../resources/list";
-import { useRouter } from "next/navigation";
+
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const session = useSession();
@@ -11,9 +13,11 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   const { status } = session;
 
-  if (status !== "authenticated") {
-    router.push("/");
-  }
+  useEffect(() => {
+    if (status !== "authenticated") {
+      router.push("/");
+    }
+  }, [router, status]);
 
   return (
     <>

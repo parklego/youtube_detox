@@ -1,7 +1,6 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
@@ -13,7 +12,6 @@ import { FaLongArrowAltDown } from "react-icons/fa";
 
 const Dashboard = () => {
   const session = useSession();
-  const router = useRouter();
 
   const [record, setRecord] = useState({
     initialTime: "",
