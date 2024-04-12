@@ -12,7 +12,7 @@ export const POST = async (request: Request, response: Response) => {
           part: "snippet",
           q: data.keyword,
           type: "channel",
-          key: process.env.YOTUBE_API_KEY,
+          key: process.env.YOUTUBE_API_KEY,
         },
       }
     );
@@ -24,6 +24,6 @@ export const POST = async (request: Request, response: Response) => {
 
     return NextResponse.json(result);
   } catch (error) {
-    return NextResponse.json({ message: "Error" }, { status: 500 });
+    return NextResponse.json({ message: error }, { status: 500 });
   }
 };
