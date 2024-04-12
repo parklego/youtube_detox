@@ -26,3 +26,21 @@ interface Channel {
   };
   snippet: any;
 }
+
+interface Content {
+  id: string;
+  name: string;
+  video: Video[];
+}
+
+interface Video {
+  etag: string;
+  items: any[];
+  kind: string;
+  nextPageToken: string;
+  pageInfo: {
+    totalResults: number;
+    resultsPerPage: number;
+  };
+  regionCode: string;
+}

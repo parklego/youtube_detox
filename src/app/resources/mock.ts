@@ -279,7 +279,7 @@ export const categoryMock = [
   },
 ];
 
-export const resultVidoe = [
+export const resultVideo = [
   {
     id: "5u-8JQcHmq1xtG0AYCY3d",
     name: "예능",

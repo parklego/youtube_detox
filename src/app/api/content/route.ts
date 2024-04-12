@@ -1,4 +1,4 @@
-import { categoryMock, resultVidoe } from "@/app/resources/mock";
+import { categoryMock, resultVideo } from "@/app/resources/mock";
 import prisma from "@/utils/db";
 import axios from "axios";
 import { NextResponse } from "next/server";
@@ -15,39 +15,44 @@ export const POST = async (request: Request, response: Response) => {
       },
     });
 
-    // Todo : youtube api token access to userData
+    // here !!
+    // Todo : save list token
+    // use categoryMock
 
-    // const videoListPromises = categoryMock.map(async (category) => {
-    //   const videoList = await Promise.all(
-    //     category.channel.map(async (item: any) => {
-    //       let channelId = item.id.channelId;
-    //       const searchVideo = await axios.get(
-    //         "https://www.googleapis.com/youtube/v3/search",
-    //         {
-    //           params: {
-    //             part: "snippet",
-    //             channelId: channelId,
-    //             type: "video",
-    //             key: process.env.YOUTUBE_API_KEY,
-    //             maxResults: 1,
-    //             order: "date",
-    //           },
-    //         }
-    //       );
-    //       return searchVideo.data;
-    //     })
-    //   );
+    const videoListPromises = userData.category.map(async (category) => {
+      const videoList = await Promise.all(
+        category.channel.map(async (item: any) => {
+          let channelId = item.id.channelId;
+          const searchVideo = await axios.get(
+            "https://www.googleapis.com/youtube/v3/search",
+            {
+              params: {
+                part: "snippet",
+                channelId: channelId,
+                type: "video",
+                key: process.env.YOUTUBE_API_KEY,
+                maxResults: 1,
+                order: "date",
+              },
+            }
+          );
+          return searchVideo.data;
+        })
+      );
 
-    //   return {
-    //     id: category.id,
-    //     name: category.name,
-    //     video: videoList,
-    //   };
-    // });
+      return {
+        id: category.id,
+        name: category.name,
+        video: videoList,
+      };
+    });
 
-    // let result = await Promise.all(videoListPromises);
+    let result = await Promise.all(videoListPromises);
 
-    let result = resultVidoe;
+    // here !!
+    // Todo : save list token
+    // use resultVideo
+    // let result = resultVideo;
 
     return NextResponse.json(result);
   } catch (error) {
