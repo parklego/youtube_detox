@@ -67,6 +67,11 @@
 
   main {
     margin-top: 60px;
+    input[type="text"],
+    textarea,
+    select {
+      font-size: 16px;
+    }
   }
 }
 

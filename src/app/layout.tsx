@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   title: "Youtube detox",
   description:
     "Youtube detox는 소중한 시간을 절약하고, 더 나은 삶의 균형을 찾는 도구입니다.",
+    viewport: {
+      width: 'device-width',
+      initialScale: 1,
+      maximumScale: 1
+    }
 };
 
 export default function RootLayout({
