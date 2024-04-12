@@ -2,8 +2,7 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from "@prisma/client";
 import { DateTime } from "luxon";
-
-const prisma = new PrismaClient();
+import prisma from "@/utils/db";
 
 const handler = NextAuth({
   providers: [
