@@ -42,14 +42,6 @@ const Dashboard = () => {
     dataFetch();
   }, [data]);
 
-  if (status === "loading") {
-    return <div className={styles.container}>loading..</div>;
-  }
-
-  if (status === "unauthenticated") {
-    router.push("/signin");
-  }
-
   return (
     <div className={styles.dashboard}>
       <p>{`반가워요. ${data?.user?.name}님.`}</p>

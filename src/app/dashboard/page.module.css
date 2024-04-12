@@ -83,6 +83,10 @@
   gap: 15px;
 }
 
+.loadingWrapper {
+  margin-top: 15%;
+}
+
 @media (max-width: 767px) {
   .wrapper {
     flex-direction: column;
