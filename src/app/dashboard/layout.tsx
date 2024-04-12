@@ -14,7 +14,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const { status } = session;
 
   useEffect(() => {
-    if (status !== "authenticated") {
+    if (status !== "authenticated" && status !== "loading") {
       router.push("/");
     }
   }, [router, status]);
