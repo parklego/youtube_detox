@@ -44,3 +44,15 @@ interface Video {
   };
   regionCode: string;
 }
+
+type UserData = {
+  id: number;
+  email: string;
+  name: string;
+  category: Category[] | any;
+  initialTime: string | null;
+  initialState: boolean;
+  detoxTime: string | null;
+  signinProvider: string;
+  createdAt: string;
+} | null;

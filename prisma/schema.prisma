@@ -15,13 +15,13 @@ datasource db {
 
 model User {
   id      Int      @id @default(autoincrement())
-  email   String?   @unique
-  name    String?
+  email   String   @unique
+  name    String
   category Json?
   initialTime String?
   initialState Boolean @default(false)
   detoxTime String?
   signinProvider String
-  createdAt String?
+  createdAt String
 }
 
