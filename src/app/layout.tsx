@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Viewport } from "next";
 import { Orbit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
@@ -12,11 +13,15 @@ export const metadata: Metadata = {
   title: "Youtube detox",
   description:
     "Youtube detox는 소중한 시간을 절약하고, 더 나은 삶의 균형을 찾는 도구입니다.",
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-      maximumScale: 1
-    }
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  // Also supported by less commonly used
+  // interactiveWidget: 'resizes-visual',
 };
 
 export default function RootLayout({
