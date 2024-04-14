@@ -48,6 +48,7 @@ const Channel = () => {
     fetchCategoryList();
   }, [data]);
 
+  console.log(selectCategory);
   const handleSearchChannel = async () => {
     if (keyword.length <= 1) {
       return toast.info("최소 2글자 이상부터 검색가능합니다.");
@@ -71,10 +72,12 @@ const Channel = () => {
   };
 
   const handleSaveChannel = async (id: string, item: Channel) => {
+    let progress = true;
     let updatedCategoryList = categoryList.map((category: Category) => {
       if (category.id === id) {
         if (category.channel.length >= 3) {
           toast.info("카테고리에 최대 3개의 채널만 추가 가능합니다.");
+          progress = false;
           return category;
         }
         return {
@@ -85,18 +88,37 @@ const Channel = () => {
       return category;
     });
 
-    setCategoryList(updatedCategoryList);
-
-    try {
-      const response = await axios.post("/api/category/save", {
-        id: data?.user.id,
-        category: updatedCategoryList,
-      });
-      if (response.status === 200) {
-        toast.success("카테고리에 해당 채널을 추가하였습니다.");
+    if (progress) {
+      try {
+        const response = await axios.post("/api/category/save", {
+          id: data?.user.id,
+          category: updatedCategoryList,
+        });
+        if (response.status === 200) {
+          toast.success("카테고리에 해당 채널을 추가하였습니다.");
+        }
+      } catch (error) {
+        toast.error("카테고리에 저장하는데 실패하였습니다.");
       }
-    } catch (error) {
-      toast.error("카테고리에 저장하는데 실패하였습니다.");
+    }
+  };
+
+  const handleDeleteChannel = async (channel: Channel) => {
+    const deleteChannelId = channel.snippet.channelId;
+
+    let deleteChannel = categoryList.map((category) => ({
+      ...category,
+      channel: category.channel.filter(
+        (channel: Channel) => channel.id.channelId !== deleteChannelId
+      ),
+    }));
+
+    const response = await axios.post("/api/category/save", {
+      id: data?.user.id,
+      category: deleteChannel,
+    });
+    if (response.status === 200) {
+      toast.success("카테고리에 해당 채널을 삭제하였습니다.");
     }
   };
 
@@ -133,15 +155,14 @@ const Channel = () => {
         <div className={styles.categoryViewer}>
           <div>{`${selectCategory.name} 카테고리에 구독중인 채널 목록입니다.`}</div>
           <div className={styles.channelViewer}>
-               {/* Todo : delete api  */}
-            {selectCategory.channel.map((channel: Channel) => (
+            {selectCategory?.channel.map((channel: Channel) => (
               <Button
                 variant="secondary"
                 key={channel.id.channelId}
                 className={styles.channelDeleteWrapper}
-                onClick={() => alert('준비중')}
+                onClick={() => handleDeleteChannel(channel)}
               >
-                <div>{channel.snippet.channelTitle}</div>     
+                <div>{channel.snippet.channelTitle}</div>
                 <AiOutlineDelete />
               </Button>
             ))}
@@ -152,7 +173,7 @@ const Channel = () => {
       <div className={styles.searchResultWrapper}>
         <div className={styles.separator} />
         {channelList.length >= 1 && <p>검색 결과입니다.</p>}
-        {channelList.map((item: Channel, idx: number) => (
+        {channelList?.map((item: Channel, idx: number) => (
           <div key={idx} className={styles.searchItemWrapper}>
             <Image
               src={item.snippet.thumbnails.default.url}
