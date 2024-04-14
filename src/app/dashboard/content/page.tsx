@@ -36,7 +36,7 @@ const Content = () => {
         return (
           <div key={c.id} className="flex flex-col gap-10">
             <p className="border-black border-b-2 py-2">{c.name} 카테고리</p>
-            <div className="flex flex-wrap gap-10 mb-10 justify-center">
+            <div className="flex flex-wrap gap-10 mb-10 justify-center lg:justify-start">
               {c.video.map((videoItem: Video) => {
                 const videoTitle = videoItem.items[0].snippet.title;
                 const videoId = videoItem.items[0].id.videoId;

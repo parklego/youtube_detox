@@ -48,6 +48,9 @@
 
 .signinButton:hover {
   transform: scale(1.1);
-  
 }
 
+.loadingWrapper {
+  margin-top: 15%;
+ text-align: center;
+}
