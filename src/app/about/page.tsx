@@ -60,23 +60,6 @@ const About = () => {
         <div className={styles.guide}>
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
-              <AccordionTrigger>
-                유튜브를 보지 말라는 소리인가요?
-              </AccordionTrigger>
-              <AccordionContent>
-                <p>이 사이트의 취지는 유튜브를 보지말자는 것이 아닙니다.</p>
-                <br />
-                <p>
-                  출퇴근 혹은 짜투리 시간에는 유튜브를 보세요. 쓸데없이
-                  알고리즘에 이끌려 꼬리에 꼬리를 물며 시청하는 습관을 버리자는
-                  것입니다.
-                </p>
-                <p>
-                  이 사이트를 통해 유튜브 시청을 절제했으면 하는 바람입니다.
-                </p>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
               <AccordionTrigger>어떻게 이용하면 되는건가요?</AccordionTrigger>
               <AccordionContent>
                 <p>아래의 순서에 따라 이용하면 됩니다.(로그인 필요)</p>
@@ -89,26 +72,38 @@ const About = () => {
                   유튜브를 보지 않는 것입니다.
                 </p>
                 <p>
-                  4. 어느정도 유튜브의 시청이 줄고 생산적인 곳에 시간을 썼다면
-                  기록 탭을 눌러, 유튜브의 시청 시간을 입력합니다.
+                  4. 어느정도 유튜브의 시청 시간이 감소하고, 생산적인 곳에
+                  시간을 썼다면 기록 탭을 눌러, 유튜브의 시청 시간을 입력합니다.
                 </p>
                 <p>
-                  5. 로그인 이후 메인 화면에서 얼마나 시청시간이 줄었고,
+                  5. 로그인 이후 메인 화면에서 얼마나 시청시간이 감소했고,
                   생산적인 곳에 썼는지 비교해봅니다.
                 </p>
                 <br />
                 <p>
                   유튜브 중독에서 벗어나 절제력을 기르기에 도움이 되었으면
-                  합니다. 커뮤니티를 통해 다른 사람들과 응원과 다짐 등을 공유
-                  해보는 것도 좋은 선택입니다.
+                  합니다.
                 </p>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
+            <AccordionItem value="item-2">
               <AccordionTrigger>이 사이트는 유료인가요?</AccordionTrigger>
               <AccordionContent>
                 아니요. 현재 유튜브에서 제공하는 무료 일일 사용량 만큼
                 이용가능합니다.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger>컨텐츠가 없다고 합니다.</AccordionTrigger>
+              <AccordionContent>
+                <p>
+                  카테고리를 추가하고, 채널을 구독하면 해당 채널의 컨텐츠를 불러
+                  올 수 있습니다.
+                </p>
+                <p>
+                  그러나 유튜브가 제공하는 일일 사용량을 초과하면 하루동안
+                  컨텐츠를 볼 수 없습니다.
+                </p>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
