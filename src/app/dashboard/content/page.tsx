@@ -19,11 +19,10 @@ const Content = () => {
           });
 
           if (response.status === 200) {
-            console.log(response.data);
             setContent(response.data);
           }
         } catch (error) {
-          toast.error("컨텐츠를 불러오는데 실패하였습니다.");
+          toast.error("컨텐츠를 불러 올 수 없습니다.");
         }
       }
     };
@@ -32,11 +31,22 @@ const Content = () => {
 
   return (
     <div className="p-4">
+      {!content.length && (
+        
+          <p>컨텐츠가 없습니다. </p>
+     
+      )}
       {content?.map((c: Content) => {
         return (
           <div key={c.id} className="flex flex-col gap-10">
             <p className="border-black border-b-2 py-2">{c.name} 카테고리</p>
             <div className="flex flex-wrap gap-10 mb-10 justify-center lg:justify-start">
+              {!c.video.length && (
+                <p>
+                  현재 카테고리에 구독한 채널이 없습니다. channel탭에서 채널을
+                  추가하여 주세요.
+                </p>
+              )}
               {c.video.map((videoItem: Video) => {
                 const videoTitle = videoItem.items[0].snippet.title;
                 const videoId = videoItem.items[0].id.videoId;

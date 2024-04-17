@@ -48,7 +48,6 @@ const Channel = () => {
     fetchCategoryList();
   }, [data]);
 
-  console.log(selectCategory);
   const handleSearchChannel = async () => {
     if (keyword.length <= 1) {
       return toast.info("최소 2글자 이상부터 검색가능합니다.");
@@ -95,6 +94,8 @@ const Channel = () => {
           category: updatedCategoryList,
         });
         if (response.status === 200) {
+          setCategoryList(updatedCategoryList);
+          setSelectCategory(undefined);
           toast.success("카테고리에 해당 채널을 추가하였습니다.");
         }
       } catch (error) {
@@ -118,7 +119,17 @@ const Channel = () => {
       category: deleteChannel,
     });
     if (response.status === 200) {
+      setCategoryList(deleteChannel);
+      setSelectCategory(undefined);
       toast.success("카테고리에 해당 채널을 삭제하였습니다.");
+    }
+  };
+
+  const handleSelectCategory = (category: Category) => {
+    if (selectCategory === category) {
+      setSelectCategory(undefined);
+    } else {
+      setSelectCategory(category);
     }
   };
 
@@ -143,18 +154,21 @@ const Channel = () => {
             <Button
               className="hover:bg-primary/10"
               variant="secondary"
-              onClick={() => setSelectCategory(category)}
+              onClick={() => handleSelectCategory(category)}
             >
               {category.name}
             </Button>
           </div>
         ))}
       </div>
-      <div className={styles.separator} />
+
       {selectCategory && (
         <div className={styles.categoryViewer}>
           <div>{`${selectCategory.name} 카테고리에 구독중인 채널 목록입니다.`}</div>
           <div className={styles.channelViewer}>
+            {!selectCategory?.channel.length && (
+              <p>현재 구독중인 채널이 없습니다.</p>
+            )}
             {selectCategory?.channel.map((channel: Channel) => (
               <Button
                 variant="secondary"
@@ -163,7 +177,9 @@ const Channel = () => {
                 onClick={() => handleDeleteChannel(channel)}
               >
                 <div>{channel.snippet.channelTitle}</div>
-                <AiOutlineDelete />
+                <div className=" text-[16px] mt-[2px]">
+                  <AiOutlineDelete />
+                </div>
               </Button>
             ))}
           </div>
