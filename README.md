@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Introduction
+
+ProjectName : youtube detox
+
+ProjectGoal : Let's reduce our addicted YouTube watch time and make precious time.
+
+ProjectStack : Next.js, TypeScript, Tailwind css, shadcn, chart.js, framer-motion, next-auth, swr, google/kakao login, youtube API, prisma, vercel
 
 ## Getting Started
 
@@ -6,31 +12,25 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You need to fill the .env file with the following code."
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```.env
+NEXTAUTH_URL='http://localhost:3000'
+NEXTAUTH_SECRET='ADD_YOUR_CODE'
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+GOOGLE_CLIENT_ID = 'ADD_YOUR_CODE'
+GOOGLE_CLIENT_SECRET = 'ADD_YOUR_CODE'
 
-## Learn More
+KAKAO_CLIENT_ID = 'ADD_YOUR_CODE'
+KAKAO_CLIENT_SECRET = 'ADD_YOUR_CODE'
 
-To learn more about Next.js, take a look at the following resources:
+YOUTUBE_API_KEY = 'ADD_YOUR_CODE'
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+DATABASE_URL= "ADD_YOUR_CODE"
+```
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+https://youtube-detox.vercel.app/
